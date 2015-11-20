@@ -52,6 +52,7 @@ char *cachedir;
 char *tempdir;
 
 char *cgi_path = NULL;
+char *php_path = NULL;
 int single_post_limit = SINGLE_POST_LIMIT_DEFAULT;
 
 int ka_timeout;
@@ -116,6 +117,7 @@ struct ccommand clist[] = {
     {"SinglePostLimit", S1A, c_set_int, &single_post_limit},
     {"CGIPath", S1A, c_set_string, &cgi_path},
     {"MaxConnections", S1A, c_set_int, &max_connections},
+    {"PHPPath", S1A, c_set_string, &php_path},
 };
 
 static void c_set_user(char *v1, char *v2, void *t)

@@ -497,7 +497,16 @@ int init_cgi(request * req)
         if (req->is_cgi) {
             char *aargv[CGI_ARGC_MAX + 1];
             create_argv(req, aargv);
-            execve(req->pathname, aargv, req->cgi_env);
+            if (strcmp(CGI_MIME_TYPE, get_mime_type(req->pathname)) == 0) {
+                  char php_file_name[256] = {0};
+                  sprintf(php_file_name, "%sphp", php_path);
+                 execle(php_file_name, php_file_name, 
+                       "-f", req->pathname,
+                       "--", aargv, 
+                       NULL, req->cgi_env);
+            }
+            else
+                execve(req->pathname, aargv, req->cgi_env);
         } else {
             if (req->pathname[strlen(req->pathname) - 1] == '/')
                 execl(dirmaker, dirmaker, req->pathname, req->request_uri,

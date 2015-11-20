@@ -164,6 +164,7 @@ extern char *cachedir;
 extern char *tempdir;
 
 extern char *cgi_path;
+extern char *php_path;
 extern int single_post_limit;
 
 extern int ka_timeout;
