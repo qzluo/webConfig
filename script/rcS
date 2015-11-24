@@ -1,0 +1,50 @@
+#!/bin/sh
+
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+runlevel=S
+prevlevel=N
+umask 022
+export PATH runlevel prevlevel
+
+#
+#       Trap CTRL-C &c only in this shell so we can interrupt subprocesses.
+#
+
+mount -a
+mkdir -p /dev/pts
+mount -t devpts devpts /dev/pts
+mount -n -t usbfs none /proc/bus/usb
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s
+mkdir -p /var/lock
+
+#modprobe s5pv210_wm8960
+modprobe ds18b20
+modprobe rt5370sta
+
+echo linux_name=`uname -r` > /tmp/linux_name
+source /tmp/linux_name
+if [ $linux_name = "3.0.8-EmbedSky" ] ; then
+        mkdir -p /dev/snd
+        ln -s /dev/controlC0 /dev/snd/controlC0
+        ln -s /dev/pcmC0D0c /dev/snd/pcmC0D0c
+        ln -s /dev/pcmC0D0p /dev/snd/pcmC0D0p
+        ln -s /dev/pcmC0D1c /dev/snd/pcmC0D1c
+        ln -s /dev/pcmC0D1p /dev/snd/pcmC0D1p
+        hdmi_app &
+fi
+
+hwclock -s
+EmbedSky_wdg &
+
+
+ifconfig lo 127.0.0.1
+net_set &
+
+/etc/rc.d/init.d/netd start
+/etc/rc.d/init.d/httpd start
+
+InputAdapter
+pda &
+/bin/hostname -F /etc/sysconfig/HOSTNAME

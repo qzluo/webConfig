@@ -1,0 +1,38 @@
+#!/bin/sh
+
+start_server()
+{
+	export LD_LIBRARY_PATH=/home/sky/ehomeserver/lib/:$LD_LIBRARY_PATH
+	/home/sky/ehomeserver/bin/ehdaemon servertest /home/sky/ehomeserver/bin/servertest&
+}
+
+stop_server()
+{
+	pid=`/bin/pidof ehdaemon`
+	if [ -n "$pid" ]; then
+		kill -9 $pid
+	fi
+
+	pid=`/bin/pidof servertest`
+	if [ -n "$pid" ]; then
+		kill -9 $pid
+	fi
+}
+
+case "$1" in
+  start)
+	start_server
+	;;
+
+  stop)
+	stop_server
+	;;
+
+  restart)
+	stop_server
+	start_server
+	;;
+
+esac
+
+exit 0
