@@ -2,6 +2,11 @@
 
 start_server()
 {
+	pid=`/bin/pidof ehdaemon`
+	if [ -n "$pid" ]; then
+		return;
+	fi		
+
 	export LD_LIBRARY_PATH=/home/sky/ehomeserver/lib/:$LD_LIBRARY_PATH
 	/home/sky/ehomeserver/bin/ehdaemon servertest /home/sky/ehomeserver/bin/servertest&
 }
