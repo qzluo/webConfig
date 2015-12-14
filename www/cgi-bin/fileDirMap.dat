@@ -1,0 +1,5 @@
+knx_json.dat:/home/sky/ehomeserver/bin/
+tcpserver.ini:/home/sky/ehomeserver/bin/
+udplistener.ini:/home/sky/ehomeserver/bin/
+ipknxsrv.ini:/home/sky/ehomeserver/bin/
+servertest:/home/sky/ehomeserver/bin/ 
