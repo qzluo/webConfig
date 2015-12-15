@@ -44,6 +44,7 @@ net_set &
 
 /etc/rc.d/init.d/netd start
 /etc/rc.d/init.d/httpd start
+/opt/webResServer/webResService start
 
 InputAdapter
 pda &
