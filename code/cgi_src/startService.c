@@ -76,8 +76,8 @@ int setEhService(int op)
     cmdSend.cmd = WEBSRV_CMD_SET_SERVICE;
     cmdSend.data[0] = op;
 
-    if (oneTcpSession("127.0.0.1", 5678, &cmdSend, 
-        sizeof(cmdSend), &cmdRsp, sizeof(cmdRsp)))
+    if (oneTcpSession("127.0.0.1", 5678, (const char*)&cmdSend, 
+        sizeof(cmdSend), (char*)&cmdRsp, sizeof(cmdRsp)))
         return -1;
 
     return cmdRsp.cmd == WEBSRV_CMD_RSP_SUCCESS ? 0 : -1;

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+start_server()
+{
+	pid=`/bin/pidof ip_com_gateway`
+	if [ -n "$pid" ]; then
+		return;
+	fi		
+
+	/opt/ip_com_gateway/ip_com_gateway&
+}
+
+stop_server()
+{
+	pid=`/bin/pidof ip_com_gateway`
+	if [ -n "$pid" ]; then
+		kill -9 $pid
+	fi
+}
+
+case "$1" in
+  start)
+	start_server
+	;;
+
+  stop)
+	stop_server
+	;;
+
+  restart)
+	stop_server
+	start_server
+	;;
+
+esac
+
+exit 0

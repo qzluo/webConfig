@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ip_com_gateway", "ip_com_gateway.vcproj", "{483AEB8A-0539-4246-BE98-EC5557C4C02B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{483AEB8A-0539-4246-BE98-EC5557C4C02B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{483AEB8A-0539-4246-BE98-EC5557C4C02B}.Debug|Win32.Build.0 = Debug|Win32
+		{483AEB8A-0539-4246-BE98-EC5557C4C02B}.Release|Win32.ActiveCfg = Release|Win32
+		{483AEB8A-0539-4246-BE98-EC5557C4C02B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
