@@ -77,6 +77,11 @@ int CWebSrvCmdParser::parseCmd(const char* szIn, int iInLen, char* szOut, int* p
             ret = -1;
             break;
 
+        case WEBSRV_CMD_RESTART_SYS:
+            system("reboot");
+            ret = -1;
+            break;
+
         default:
             setResCmdNotRecognized(szOut, p_iRetlen);
             ret = -1;

@@ -7,8 +7,8 @@ start_server()
 		return;
 	fi		
 
-	export LD_LIBRARY_PATH=/home/sky/ehomeserver/lib/:$LD_LIBRARY_PATH
-	/home/sky/ehomeserver/bin/ehdaemon servertest /home/sky/ehomeserver/bin/servertest&
+	export LD_LIBRARY_PATH=/opt/lib/:$LD_LIBRARY_PATH
+	/opt/tool/bin/ehdaemon servertest /home/sky/ehomeserver/bin/servertest&
 }
 
 stop_server()
